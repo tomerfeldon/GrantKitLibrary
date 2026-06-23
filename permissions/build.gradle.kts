@@ -57,8 +57,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.runtime)
-    api(libs.androidx.compose.ui)
+    // Public API exposes @Composable / @Stable, so compose.runtime is `api`.
+    api(libs.androidx.compose.runtime)
+    // compose.ui is used only internally (LocalContext), so it stays `implementation`.
+    implementation(libs.androidx.compose.ui)
 
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
