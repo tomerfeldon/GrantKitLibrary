@@ -17,8 +17,8 @@ package com.tomer.cleanpermissions.internal
  */
 internal class PermissionRequester(
     private val tracker: DeniedTracker,
-    private val launchSingle: (String) -> Unit,
-    private val launchMultiple: (Array<String>) -> Unit,
+    private val launchSingle: (String) -> Unit = {},
+    private val launchMultiple: (Array<String>) -> Unit = {},
 ) {
 
     /**
