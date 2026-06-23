@@ -2,6 +2,7 @@ package com.tomer.cleanpermissions
 
 import android.Manifest
 import android.content.Context
+import android.content.pm.PermissionInfo
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
 import com.tomer.cleanpermissions.internal.VersionCompat
@@ -10,6 +11,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 
 /**
@@ -21,6 +23,20 @@ import org.robolectric.annotation.Config
 class VersionCompatTest {
 
     private val context: Context get() = ApplicationProvider.getApplicationContext()
+
+    /**
+     * Robolectric does not preload the platform permission database, so tests
+     * that depend on a permission's protection level must register it first.
+     * (On a real device these definitions already exist.)
+     */
+    private fun registerPermission(name: String, protectionLevel: Int) {
+        val info = PermissionInfo().apply {
+            this.name = name
+            this.packageName = "android"
+            this.protectionLevel = protectionLevel
+        }
+        shadowOf(context.packageManager).addPermissionInfo(info)
+    }
 
     @Test
     @Config(sdk = [Build.VERSION_CODES.S]) // API 31, below Tiramisu
@@ -37,6 +53,7 @@ class VersionCompatTest {
     @Test
     @Config(sdk = [Build.VERSION_CODES.TIRAMISU])
     fun `dangerous runtime permission is not auto-granted`() {
+        registerPermission(Manifest.permission.CAMERA, PermissionInfo.PROTECTION_DANGEROUS)
         assertFalse(VersionCompat.isAutoGranted(context, Manifest.permission.CAMERA))
     }
 
@@ -44,6 +61,7 @@ class VersionCompatTest {
     fun `normal install-time permission is auto-granted`() {
         // INTERNET is a normal-protection permission: no runtime prompt, so it
         // must be reported as granted rather than pushed through the flow.
+        registerPermission(Manifest.permission.INTERNET, PermissionInfo.PROTECTION_NORMAL)
         assertTrue(VersionCompat.isAutoGranted(context, Manifest.permission.INTERNET))
     }
 
