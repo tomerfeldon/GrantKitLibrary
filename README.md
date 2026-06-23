@@ -1,4 +1,4 @@
-# CleanPermissions
+# GrantKit
 
 A Compose-first Android runtime-permissions library that finally tells
 **"never asked"** apart from **"don't ask again."**
@@ -6,7 +6,7 @@ A Compose-first Android runtime-permissions library that finally tells
 The standard Android API and Google's Accompanist can't reliably distinguish
 between a permission the user has *never been asked* for and one they've
 *permanently denied* - both look identical through
-`shouldShowRequestPermissionRationale()`. CleanPermissions solves exactly this,
+`shouldShowRequestPermissionRationale()`. GrantKit solves exactly this,
 behind one tiny declarative API: one public entry point, small config objects,
 sensible defaults, all complexity hidden internally.
 
@@ -58,7 +58,7 @@ Add the dependency to your module-level `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.tomerfeldon.GrantKitLibrary:cleanpermissions:1.0.0")
+    implementation("com.github.tomerfeldon.GrantKitLibrary:grantkit:1.0.0")
 }
 ```
 
@@ -81,8 +81,8 @@ dependencies {
 
 ```kotlin
 import android.Manifest
-import com.tomer.cleanpermissions.rememberPermission
-import com.tomer.cleanpermissions.model.PermissionStatus
+import com.tomer.grantkit.rememberPermission
+import com.tomer.grantkit.model.PermissionStatus
 
 @Composable
 fun CameraScreen() {
@@ -157,7 +157,7 @@ perms.statuses.forEach { (permission, status) ->
 ### Notifications (Android 13+)
 
 `POST_NOTIFICATIONS` only requires a runtime request on Android 13 (API 33) and
-above. On older versions CleanPermissions reports it as `Granted` automatically -
+above. On older versions GrantKit reports it as `Granted` automatically -
 no version checks in your code.
 
 ```kotlin
@@ -193,13 +193,13 @@ when {
 @Composable
 fun rememberPermission(
     permission: String,
-    config: CleanPermissionsConfig = CleanPermissionsConfig.Default,
+    config: GrantKitConfig = GrantKitConfig.Default,
 ): PermissionState
 
 @Composable
 fun rememberMultiplePermissions(
     permissions: List<String>,
-    config: CleanPermissionsConfig = CleanPermissionsConfig.Default,
+    config: GrantKitConfig = GrantKitConfig.Default,
 ): MultiplePermissionsState
 ```
 
@@ -227,7 +227,7 @@ fun rememberMultiplePermissions(
 ### Configuration
 
 ```kotlin
-val config = CleanPermissionsConfig(
+val config = GrantKitConfig(
     refreshOnResume = true, // re-check status on ON_RESUME (default)
 )
 ```
@@ -254,14 +254,14 @@ val PermissionStatus.isGranted: Boolean // true only for Granted
 ## Project Structure
 
 ```
-permissions/src/main/java/com/tomer/cleanpermissions/
-├── CleanPermissions.kt            # Public API: rememberPermission, rememberMultiplePermissions
+permissions/src/main/java/com/tomer/grantkit/
+├── GrantKit.kt            # Public API: rememberPermission, rememberMultiplePermissions
 ├── model/
 │   ├── PermissionStatus.kt        # Granted / NotRequested / Denied / PermanentlyDenied
 │   ├── PermissionState.kt         # status + request() + openSettings()
 │   └── MultiplePermissionsState.kt
 ├── config/
-│   └── CleanPermissionsConfig.kt  # small, optional behavior config
+│   └── GrantKitConfig.kt  # small, optional behavior config
 └── internal/
     ├── PermissionChecker.kt       # checkSelfPermission + shouldShowRationale + resolution
     ├── PermissionRequester.kt     # bridge to the Activity Result API launcher

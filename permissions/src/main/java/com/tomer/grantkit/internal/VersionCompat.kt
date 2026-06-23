@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.internal
+package com.tomer.grantkit.internal
 
 import android.Manifest
 import android.content.Context
@@ -45,7 +45,7 @@ internal object VersionCompat {
 
     /**
      * `true` when [permission] requires no runtime request on the current device
-     * and should therefore be reported as [com.tomer.cleanpermissions.model.PermissionStatus.Granted]
+     * and should therefore be reported as [com.tomer.grantkit.model.PermissionStatus.Granted]
      * without consulting the request flow.
      *
      * Covers two cases:

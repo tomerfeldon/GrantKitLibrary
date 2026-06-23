@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.internal
+package com.tomer.grantkit.internal
 
 import android.content.Context
 
@@ -6,7 +6,7 @@ import android.content.Context
  * Remembers whether a permission request has *ever* been launched for a given
  * permission on this install.
  *
- * This single bit of persisted state is what lets CleanPermissions tell apart
+ * This single bit of persisted state is what lets GrantKit tell apart
  * "never asked" from "permanently denied" — two situations the platform APIs
  * report identically. We persist it in [android.content.SharedPreferences]
  * (deliberately no DataStore dependency) keyed by the permission string.
@@ -31,6 +31,6 @@ internal class DeniedTracker(context: Context) {
     }
 
     private companion object {
-        const val PREFS_NAME = "com.tomer.cleanpermissions.tracker"
+        const val PREFS_NAME = "com.tomer.grantkit.tracker"
     }
 }

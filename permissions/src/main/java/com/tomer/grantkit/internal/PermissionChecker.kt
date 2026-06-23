@@ -1,11 +1,11 @@
-package com.tomer.cleanpermissions.internal
+package com.tomer.grantkit.internal
 
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.tomer.cleanpermissions.model.PermissionStatus
+import com.tomer.grantkit.model.PermissionStatus
 
 /**
  * Thin wrappers over the two platform APIs that report permission state, plus

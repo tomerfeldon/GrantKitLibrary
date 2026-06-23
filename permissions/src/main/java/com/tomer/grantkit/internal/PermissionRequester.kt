@@ -1,7 +1,7 @@
-package com.tomer.cleanpermissions.internal
+package com.tomer.grantkit.internal
 
 /**
- * Bridges a [com.tomer.cleanpermissions.model.PermissionState.request] call to
+ * Bridges a [com.tomer.grantkit.model.PermissionState.request] call to
  * an Activity Result API launcher, while guaranteeing the
  * [DeniedTracker.markRequested] flag is set *at the moment a request is
  * launched* — the precise instant required for correct PermanentlyDenied

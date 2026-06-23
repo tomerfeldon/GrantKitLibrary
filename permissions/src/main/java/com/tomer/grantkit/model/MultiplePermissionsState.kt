@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.model
+package com.tomer.grantkit.model
 
 import androidx.compose.runtime.Stable
 
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Stable
  * Observable state for a group of runtime permissions requested together.
  *
  * Obtain an instance with
- * [com.tomer.cleanpermissions.rememberMultiplePermissions]. Like
+ * [com.tomer.grantkit.rememberMultiplePermissions]. Like
  * [PermissionState], every property is backed by Compose snapshot state and
  * refreshes automatically on result delivery and on app resume.
  */

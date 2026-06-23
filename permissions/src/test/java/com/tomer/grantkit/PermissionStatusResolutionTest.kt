@@ -1,8 +1,8 @@
-package com.tomer.cleanpermissions
+package com.tomer.grantkit
 
-import com.tomer.cleanpermissions.internal.PermissionChecker
-import com.tomer.cleanpermissions.model.PermissionStatus
-import com.tomer.cleanpermissions.model.isGranted
+import com.tomer.grantkit.internal.PermissionChecker
+import com.tomer.grantkit.model.PermissionStatus
+import com.tomer.grantkit.model.isGranted
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

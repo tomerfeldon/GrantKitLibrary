@@ -1,8 +1,8 @@
-package com.tomer.cleanpermissions
+package com.tomer.grantkit
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.tomer.cleanpermissions.internal.DeniedTracker
+import com.tomer.grantkit.internal.DeniedTracker
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test

@@ -1,9 +1,9 @@
-package com.tomer.cleanpermissions.model
+package com.tomer.grantkit.model
 
 /**
  * The resolved state of a single Android runtime permission.
  *
- * Unlike the raw platform APIs, CleanPermissions distinguishes between a
+ * Unlike the raw platform APIs, GrantKit distinguishes between a
  * permission that has *never been requested* and one that the user has
  * *permanently denied* ("don't ask again"). Those two situations are
  * indistinguishable through [android.app.Activity.shouldShowRequestPermissionRationale]
@@ -20,7 +20,7 @@ public sealed interface PermissionStatus {
      * The permission has never been requested on this device/install.
      *
      * Show your first-time UI here (for example, a button that calls
-     * [com.tomer.cleanpermissions.model.PermissionState.request]).
+     * [com.tomer.grantkit.model.PermissionState.request]).
      */
     public data object NotRequested : PermissionStatus
 
@@ -30,7 +30,7 @@ public sealed interface PermissionStatus {
      *
      * This is the right moment to display a rationale explaining why the
      * permission is needed before calling
-     * [com.tomer.cleanpermissions.model.PermissionState.request] a second time.
+     * [com.tomer.grantkit.model.PermissionState.request] a second time.
      */
     public data object Denied : PermissionStatus
 
@@ -38,7 +38,7 @@ public sealed interface PermissionStatus {
      * The user selected "don't ask again" (or the OS otherwise blocks further
      * prompts). The system dialog can no longer be shown, so the only way to
      * grant the permission is through the app's settings screen via
-     * [com.tomer.cleanpermissions.model.PermissionState.openSettings].
+     * [com.tomer.grantkit.model.PermissionState.openSettings].
      */
     public data object PermanentlyDenied : PermissionStatus
 }

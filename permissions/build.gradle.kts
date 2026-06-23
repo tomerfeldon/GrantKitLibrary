@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tomer.cleanpermissions"
+    namespace = "com.tomer.grantkit"
     compileSdk = 35
 
     defaultConfig {
@@ -73,7 +73,7 @@ publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "com.github.tomerfeldon"
-            artifactId = "cleanpermissions"
+            artifactId = "grantkit"
             version = "0.1.0"
 
             afterEvaluate {

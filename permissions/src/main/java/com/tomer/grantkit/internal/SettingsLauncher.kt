@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.internal
+package com.tomer.grantkit.internal
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.provider.Settings
  *
  * This is the only path back to granting a permission once the system stops
  * showing the request dialog, so it's surfaced via
- * [com.tomer.cleanpermissions.model.PermissionState.openSettings].
+ * [com.tomer.grantkit.model.PermissionState.openSettings].
  */
 internal class SettingsLauncher(private val context: Context) {
 

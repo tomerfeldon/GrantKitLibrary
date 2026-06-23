@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.tomer.cleanpermissions.sample"
+    namespace = "com.tomer.grantkit.sample"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.tomer.cleanpermissions.sample"
+        applicationId = "com.tomer.grantkit.sample"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

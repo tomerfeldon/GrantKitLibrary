@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.sample
+package com.tomer.grantkit.sample
 
 import android.Manifest
 import android.os.Bundle
@@ -21,12 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.tomer.cleanpermissions.model.PermissionState
-import com.tomer.cleanpermissions.model.PermissionStatus
-import com.tomer.cleanpermissions.rememberPermission
+import com.tomer.grantkit.model.PermissionState
+import com.tomer.grantkit.model.PermissionStatus
+import com.tomer.grantkit.rememberPermission
 
 /**
- * Single-screen demo exercising CleanPermissions end to end: Camera,
+ * Single-screen demo exercising GrantKit end to end: Camera,
  * Notifications and Fine Location, each with a live [PermissionStatus] and the
  * appropriate action (request / open settings).
  */
@@ -57,7 +57,7 @@ private fun SampleScreen() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
-            text = "CleanPermissions",
+            text = "GrantKit",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
         )

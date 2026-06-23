@@ -1,7 +1,7 @@
-package com.tomer.cleanpermissions.config
+package com.tomer.grantkit.config
 
 /**
- * Optional behavior configuration for CleanPermissions.
+ * Optional behavior configuration for GrantKit.
  *
  * Because this is a behavior library (not a visual one), the surface here is
  * intentionally tiny. The defaults are chosen to be correct for the vast
@@ -13,11 +13,11 @@ package com.tomer.cleanpermissions.config
  *   the user changes a permission from system settings while the app is
  *   backgrounded. Set to `false` to opt out of that automatic refresh.
  */
-public data class CleanPermissionsConfig(
+public data class GrantKitConfig(
     val refreshOnResume: Boolean = true,
 ) {
     public companion object {
         /** The default configuration: refresh on resume enabled. */
-        public val Default: CleanPermissionsConfig = CleanPermissionsConfig()
+        public val Default: GrantKitConfig = GrantKitConfig()
     }
 }

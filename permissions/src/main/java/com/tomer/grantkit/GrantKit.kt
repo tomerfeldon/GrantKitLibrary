@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions
+package com.tomer.grantkit
 
 import android.app.Activity
 import android.content.Context
@@ -14,15 +14,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.tomer.cleanpermissions.config.CleanPermissionsConfig
-import com.tomer.cleanpermissions.internal.DeniedTracker
-import com.tomer.cleanpermissions.internal.PermissionChecker
-import com.tomer.cleanpermissions.internal.PermissionRequester
-import com.tomer.cleanpermissions.internal.SettingsLauncher
-import com.tomer.cleanpermissions.internal.VersionCompat
-import com.tomer.cleanpermissions.model.MultiplePermissionsState
-import com.tomer.cleanpermissions.model.PermissionState
-import com.tomer.cleanpermissions.model.PermissionStatus
+import com.tomer.grantkit.config.GrantKitConfig
+import com.tomer.grantkit.internal.DeniedTracker
+import com.tomer.grantkit.internal.PermissionChecker
+import com.tomer.grantkit.internal.PermissionRequester
+import com.tomer.grantkit.internal.SettingsLauncher
+import com.tomer.grantkit.internal.VersionCompat
+import com.tomer.grantkit.model.MultiplePermissionsState
+import com.tomer.grantkit.model.PermissionState
+import com.tomer.grantkit.model.PermissionStatus
 
 /**
  * Remembers and observes the state of a single Android runtime [permission].
@@ -39,12 +39,12 @@ import com.tomer.cleanpermissions.model.PermissionStatus
  * ```
  *
  * @param permission an Android permission string, e.g. `Manifest.permission.CAMERA`.
- * @param config optional [CleanPermissionsConfig] tuning runtime behavior.
+ * @param config optional [GrantKitConfig] tuning runtime behavior.
  */
 @Composable
 public fun rememberPermission(
     permission: String,
-    config: CleanPermissionsConfig = CleanPermissionsConfig.Default,
+    config: GrantKitConfig = GrantKitConfig.Default,
 ): PermissionState {
     val context = LocalContext.current
     val checker = remember(context) { PermissionChecker(context) }
@@ -92,13 +92,13 @@ public fun rememberPermission(
  * requested together.
  *
  * @param permissions the Android permission strings to track.
- * @param config optional [CleanPermissionsConfig] tuning runtime behavior.
+ * @param config optional [GrantKitConfig] tuning runtime behavior.
  * @see rememberPermission
  */
 @Composable
 public fun rememberMultiplePermissions(
     permissions: List<String>,
-    config: CleanPermissionsConfig = CleanPermissionsConfig.Default,
+    config: GrantKitConfig = GrantKitConfig.Default,
 ): MultiplePermissionsState {
     val context = LocalContext.current
     val checker = remember(context) { PermissionChecker(context) }

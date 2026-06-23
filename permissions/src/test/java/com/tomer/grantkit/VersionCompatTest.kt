@@ -1,11 +1,11 @@
-package com.tomer.cleanpermissions
+package com.tomer.grantkit
 
 import android.Manifest
 import android.content.Context
 import android.content.pm.PermissionInfo
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
-import com.tomer.cleanpermissions.internal.VersionCompat
+import com.tomer.grantkit.internal.VersionCompat
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test

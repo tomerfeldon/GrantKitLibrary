@@ -1,4 +1,4 @@
-package com.tomer.cleanpermissions.model
+package com.tomer.grantkit.model
 
 import androidx.compose.runtime.Stable
 
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Stable
  * Observable state of a single runtime permission.
  *
  * Obtain an instance with
- * [com.tomer.cleanpermissions.rememberPermission]. The [status] property is
+ * [com.tomer.grantkit.rememberPermission]. The [status] property is
  * backed by Compose snapshot state, so reading it inside a composable will
  * automatically recompose your UI when the permission result arrives or when
  * the app returns to the foreground (the user may have changed the permission
