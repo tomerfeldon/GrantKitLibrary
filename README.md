@@ -5,7 +5,7 @@ A Compose-first Android runtime-permissions library that finally tells
 
 The standard Android API and Google's Accompanist can't reliably distinguish
 between a permission the user has *never been asked* for and one they've
-*permanently denied* — both look identical through
+*permanently denied* - both look identical through
 `shouldShowRequestPermissionRationale()`. CleanPermissions solves exactly this,
 behind one tiny declarative API: one public entry point, small config objects,
 sensible defaults, all complexity hidden internally.
@@ -23,20 +23,20 @@ sensible defaults, all complexity hidden internally.
 
 ## Features
 
-- 🎯 **One public entry point** — `rememberPermission` / `rememberMultiplePermissions`.
-- 🔍 **Permanent-denial detection** — reliably separates `NotRequested` from
+- 🎯 **One public entry point** - `rememberPermission` / `rememberMultiplePermissions`.
+- 🔍 **Permanent-denial detection** - reliably separates `NotRequested` from
   `PermanentlyDenied`, the gap every other solution gets wrong.
-- ⚡ **Compose-native** — `status` is backed by Compose state, so your UI
+- ⚡ **Compose-native** - `status` is backed by Compose state, so your UI
   recomposes automatically when a result comes back.
-- 🔄 **Auto-refresh on resume** — re-checks status when the app returns to the
+- 🔄 **Auto-refresh on resume** - re-checks status when the app returns to the
   foreground, in case the user changed it in system settings.
-- 👥 **Multiple permissions** — request a group at once with aggregated state.
-- 🤖 **Version-aware** — `POST_NOTIFICATIONS` auto-granted below API 33,
+- 👥 **Multiple permissions** - request a group at once with aggregated state.
+- 🤖 **Version-aware** - `POST_NOTIFICATIONS` auto-granted below API 33,
   background-location handling, normal/install-time permissions reported correctly.
-- ⚙️ **Settings deep-link** — `openSettings()` for permanently-denied permissions.
-- 💾 **Survives recreation** — state re-derived from the system as the source of truth.
-- 📦 **Zero third-party dependencies** — only AndroidX Core and Jetpack Compose.
-- 📝 **Fully documented public API** — small surface, stable naming, KDoc on everything.
+- ⚙️ **Settings deep-link** - `openSettings()` for permanently-denied permissions.
+- 💾 **Survives recreation** - state re-derived from the system as the source of truth.
+- 📦 **Zero third-party dependencies** - only AndroidX Core and Jetpack Compose.
+- 📝 **Fully documented public API** - small surface, stable naming, KDoc on everything.
 
 ## Installation
 
@@ -112,7 +112,7 @@ Button(onClick = camera::request, enabled = !camera.status.isGranted) {
 ### Handling Permanent Denial
 
 Once the user chooses "don't ask again", the system dialog can no longer be
-shown — the only way forward is the app's settings screen.
+shown - the only way forward is the app's settings screen.
 
 ```kotlin
 val mic = rememberPermission(Manifest.permission.RECORD_AUDIO)
@@ -157,7 +157,7 @@ perms.statuses.forEach { (permission, status) ->
 ### Notifications (Android 13+)
 
 `POST_NOTIFICATIONS` only requires a runtime request on Android 13 (API 33) and
-above. On older versions CleanPermissions reports it as `Granted` automatically —
+above. On older versions CleanPermissions reports it as `Granted` automatically -
 no version checks in your code.
 
 ```kotlin
@@ -205,7 +205,7 @@ fun rememberMultiplePermissions(
 
 ### Data Models
 
-`PermissionState` — observable state of a single permission:
+`PermissionState` - observable state of a single permission:
 
 | Member | Description |
 | --- | --- |
@@ -214,7 +214,7 @@ fun rememberMultiplePermissions(
 | `request()` | Launches the system permission dialog (no-op if already granted). |
 | `openSettings()` | Opens this app's settings screen. |
 
-`MultiplePermissionsState` — observable state of a group:
+`MultiplePermissionsState` - observable state of a group:
 
 | Member | Description |
 | --- | --- |
@@ -243,9 +243,9 @@ A sealed interface with four states:
 | Status | Meaning |
 | --- | --- |
 | `Granted` | Permission is granted; the protected API may be used. |
-| `NotRequested` | Never requested on this install — show your first-time UI. |
-| `Denied` | Denied once, can ask again — a good time to show a rationale. |
-| `PermanentlyDenied` | "Don't ask again" — only changeable via `openSettings()`. |
+| `NotRequested` | Never requested on this install - show your first-time UI. |
+| `Denied` | Denied once, can ask again - a good time to show a rationale. |
+| `PermanentlyDenied` | "Don't ask again" - only changeable via `openSettings()`. |
 
 ```kotlin
 val PermissionStatus.isGranted: Boolean // true only for Granted
@@ -272,21 +272,21 @@ permissions/src/main/java/com/tomer/cleanpermissions/
 
 ## Edge Cases Handled
 
-- **Undeclared permission** — a permission not in your `AndroidManifest.xml` is
+- **Undeclared permission** - a permission not in your `AndroidManifest.xml` is
   handled gracefully instead of crashing.
-- **Rapid repeated `request()`** — the "requested" flag is idempotent and the
+- **Rapid repeated `request()`** - the "requested" flag is idempotent and the
   Activity Result launcher de-dupes in-flight requests.
-- **Grant in settings, then return** — status refreshes on `ON_RESUME`.
-- **Configuration change / process recreation** — the requested flag persists in
+- **Grant in settings, then return** - status refreshes on `ON_RESUME`.
+- **Configuration change / process recreation** - the requested flag persists in
   `SharedPreferences`, and status is re-derived from the system as source of truth.
-- **Auto-granted permissions** — permissions that require no runtime request on
+- **Auto-granted permissions** - permissions that require no runtime request on
   the current Android version are reported as `Granted` directly.
 
 ## Requirements
 
 - `minSdk = 24`, `compileSdk = 35`
 - Kotlin + Jetpack Compose
-- Dependencies: AndroidX Core and Jetpack Compose only — no Accompanist, no
+- Dependencies: AndroidX Core and Jetpack Compose only - no Accompanist, no
   DataStore, no third-party libraries.
 
 ## License
