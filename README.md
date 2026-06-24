@@ -14,8 +14,8 @@ sensible defaults, all complexity hidden internally.
 
 <p align="center">
   <img src="https://github.com/tomerfeldon/GrantKitLibrary/blob/43c76d4eb6f39b3d34db18aa3c61a357e7242e08/Screenshot_20260624_184347.png" width="30%" /> 
-  <img src="docs/screenshot_denied.png" width="30%" />
-  <img src="docs/screenshot_permanently_denied.png" width="30%" />
+  <img src="https://github.com/tomerfeldon/GrantKitLibrary/blob/4ad67437114cec2f783afbc7e60c7f7eadeaa8b1/Screenshot_20260624_184448.png" width="30%" />
+  <img src="https://github.com/tomerfeldon/GrantKitLibrary/blob/4ad67437114cec2f783afbc7e60c7f7eadeaa8b1/Screenshot_20260624_184904.png" width="30%" />
 </p>
 
 > 📷 Screenshots of the included `:sample` app will be added here. Run
